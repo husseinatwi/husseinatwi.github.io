@@ -1,0 +1,82 @@
+<!-- Spline 3D Scene - GHL Custom Code -->
+<!-- Paste this into a GHL Custom Code / Custom JS/HTML element -->
+<!-- Change the SCENE_URL below to your Spline scene URL -->
+
+<style>
+  .spline-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+  }
+
+  .spline-loader {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    z-index: 1;
+    transition: opacity 0.4s ease;
+  }
+
+  .spline-loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .spline-loader__spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e5e5e5;
+    border-top-color: #2d2d2d;
+    border-radius: 50%;
+    animation: spline-spin 0.8s linear infinite;
+  }
+
+  @keyframes spline-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  spline-viewer {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+  }
+</style>
+
+<div class="spline-wrapper">
+  <!-- Loading spinner (auto-hides when scene loads) -->
+  <div class="spline-loader" id="spline-loader">
+    <div class="spline-loader__spinner"></div>
+  </div>
+
+  <!-- Spline 3D Scene -->
+  <spline-viewer
+    id="spline-scene"
+    url="https://prod.spline.design/YOUR-SCENE-ID/scene.splinecode"
+  ></spline-viewer>
+</div>
+
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+
+<script>
+(function() {
+  var viewer = document.getElementById('spline-scene');
+  var loader = document.getElementById('spline-loader');
+
+  if (viewer) {
+    // Hide loader once the Spline scene fires its load event
+    viewer.addEventListener('load', function() {
+      if (loader) loader.classList.add('hidden');
+    });
+
+    // Fallback: hide loader after 8 seconds regardless
+    setTimeout(function() {
+      if (loader) loader.classList.add('hidden');
+    }, 8000);
+  }
+})();
+</script>
