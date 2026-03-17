@@ -1,0 +1,873 @@
+<!-- Arab Coach Funnel - GHL Custom Code -->
+<!-- Paste this entire block into a GHL Custom Code / Custom JS/HTML element -->
+
+<style>
+  /* ===== CSS Variables (Light Theme) ===== */
+  :root {
+    --acf-radius: 0.625rem;
+    --acf-bg: #ffffff;
+    --acf-fg: #171717;
+    --acf-card: #ffffff;
+    --acf-card-fg: #171717;
+    --acf-primary: #2d2d2d;
+    --acf-primary-fg: #fafafa;
+    --acf-muted: #f5f5f5;
+    --acf-muted-fg: #737373;
+    --acf-border: #e5e5e5;
+    --acf-ring: #a3a3a3;
+  }
+
+  /* ===== Reset & Base ===== */
+  .acf-root *,
+  .acf-root *::before,
+  .acf-root *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .acf-root {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--acf-fg);
+    background: var(--acf-bg);
+    direction: rtl;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .acf-root img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ===== Utility Classes ===== */
+  .acf-container {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .acf-container--md {
+    max-width: 1024px;
+  }
+
+  .acf-container--sm {
+    max-width: 768px;
+  }
+
+  .acf-text-center { text-align: center; }
+
+  /* ===== Animations ===== */
+  @keyframes acf-fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes acf-fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes acf-scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes acf-blurIn {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  .acf-animate {
+    opacity: 0;
+  }
+
+  .acf-animate--visible {
+    animation-fill-mode: forwards;
+  }
+
+  .acf-animate--fade-up.acf-animate--visible {
+    animation: acf-fadeInUp 0.6s ease-out forwards;
+  }
+
+  .acf-animate--fade-right.acf-animate--visible {
+    animation: acf-fadeInRight 0.5s ease-out forwards;
+  }
+
+  .acf-animate--scale.acf-animate--visible {
+    animation: acf-scaleIn 0.6s ease-out forwards;
+  }
+
+  .acf-animate--blur.acf-animate--visible {
+    animation: acf-blurIn 0.8s ease-out forwards;
+  }
+
+  /* ===== Hero Section ===== */
+  .acf-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 1rem;
+    overflow: hidden;
+    background: linear-gradient(to bottom right, var(--acf-bg), var(--acf-bg), var(--acf-muted));
+  }
+
+  .acf-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(45, 45, 45, 0.05), transparent, transparent);
+    pointer-events: none;
+  }
+
+  .acf-hero__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (min-width: 1024px) {
+    .acf-hero__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .acf-hero__content {
+    text-align: center;
+  }
+
+  @media (min-width: 1024px) {
+    .acf-hero__content {
+      text-align: right;
+    }
+  }
+
+  .acf-hero__badge {
+    display: inline-block;
+    background: rgba(45, 45, 45, 0.1);
+    color: var(--acf-primary);
+    padding: 0.5rem 1.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .acf-hero__title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--acf-fg);
+    margin-bottom: 1.5rem;
+  }
+
+  .acf-hero__subtitle {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    color: var(--acf-muted-fg);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .acf-hero__subtitle span {
+    display: inline-block;
+    opacity: 0;
+    filter: blur(10px);
+    transition: opacity 0.8s ease, filter 0.8s ease;
+  }
+
+  .acf-hero__subtitle span.acf-word--visible {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  /* ===== Buttons ===== */
+  .acf-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .acf-btn-group {
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .acf-btn-group {
+      justify-content: flex-end;
+    }
+  }
+
+  .acf-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: var(--acf-radius);
+    font-weight: 700;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+  }
+
+  .acf-btn:hover {
+    transform: scale(1.05) translateY(-2px);
+  }
+
+  .acf-btn:active {
+    transform: scale(0.98);
+  }
+
+  .acf-btn--primary {
+    background: var(--acf-primary);
+    color: var(--acf-primary-fg);
+    box-shadow: 0 10px 25px rgba(45, 45, 45, 0.25);
+  }
+
+  .acf-btn--primary:hover {
+    background: #1a1a1a;
+  }
+
+  .acf-btn--outline {
+    background: transparent;
+    color: var(--acf-fg);
+    border: 2px solid var(--acf-border);
+  }
+
+  .acf-btn--outline:hover {
+    background: var(--acf-muted);
+  }
+
+  .acf-btn--large {
+    padding: 1.5rem 3rem;
+    font-size: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 15px 40px rgba(45, 45, 45, 0.3);
+  }
+
+  /* ===== Stats ===== */
+  .acf-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding-top: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .acf-stats {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .acf-stat {
+    text-align: center;
+  }
+
+  .acf-stat__icon {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto 0.5rem;
+    color: var(--acf-primary);
+  }
+
+  .acf-stat__value {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--acf-fg);
+  }
+
+  .acf-stat__label {
+    font-size: 0.875rem;
+    color: var(--acf-muted-fg);
+  }
+
+  /* ===== Coach Image ===== */
+  .acf-coach {
+    position: relative;
+  }
+
+  .acf-coach__glow {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top right, rgba(45, 45, 45, 0.2), transparent);
+    border-radius: 1.5rem;
+    filter: blur(48px);
+  }
+
+  .acf-coach__img {
+    position: relative;
+    border-radius: 1.5rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto;
+    object-fit: cover;
+  }
+
+  .acf-coach__card {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--acf-border);
+  }
+
+  .acf-coach__name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--acf-fg);
+    margin-bottom: 0.25rem;
+  }
+
+  .acf-coach__title {
+    color: var(--acf-muted-fg);
+    font-size: 0.95rem;
+  }
+
+  .acf-coach__stars {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .acf-coach__stars svg {
+    width: 1rem;
+    height: 1rem;
+    fill: #facc15;
+    color: #facc15;
+  }
+
+  .acf-coach__rating {
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--acf-muted-fg);
+  }
+
+  /* ===== Benefits Section ===== */
+  .acf-benefits {
+    padding: 5rem 1rem;
+    background: rgba(245, 245, 245, 0.3);
+  }
+
+  .acf-benefits__heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--acf-fg);
+    margin-bottom: 1rem;
+  }
+
+  .acf-benefits__sub {
+    font-size: 1.25rem;
+    color: var(--acf-muted-fg);
+    margin-bottom: 3rem;
+  }
+
+  .acf-benefits__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .acf-benefits__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .acf-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: var(--acf-card);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--acf-border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .acf-benefit:hover {
+    transform: scale(1.02) translateX(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .acf-benefit__icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    background: rgba(45, 45, 45, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .acf-benefit__icon svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--acf-primary);
+  }
+
+  .acf-benefit__text {
+    font-size: 1.125rem;
+    color: var(--acf-fg);
+  }
+
+  /* ===== Testimonials Section ===== */
+  .acf-testimonials {
+    padding: 5rem 1rem;
+  }
+
+  .acf-testimonials__heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: var(--acf-fg);
+    margin-bottom: 1rem;
+  }
+
+  .acf-testimonials__sub {
+    font-size: 1.25rem;
+    color: var(--acf-muted-fg);
+    margin-bottom: 3rem;
+  }
+
+  .acf-testimonials__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .acf-testimonials__grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .acf-testimonial {
+    background: var(--acf-card);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid var(--acf-border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .acf-testimonial:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .acf-testimonial__header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .acf-testimonial__img {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .acf-testimonial__name {
+    font-weight: 700;
+    color: var(--acf-fg);
+  }
+
+  .acf-testimonial__role {
+    font-size: 0.875rem;
+    color: var(--acf-muted-fg);
+  }
+
+  .acf-testimonial__stars {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .acf-testimonial__stars svg {
+    width: 1rem;
+    height: 1rem;
+    fill: #facc15;
+    color: #facc15;
+  }
+
+  .acf-testimonial__content {
+    color: var(--acf-muted-fg);
+    line-height: 1.7;
+  }
+
+  /* ===== CTA Section ===== */
+  .acf-cta {
+    padding: 5rem 1rem;
+    background: linear-gradient(to bottom right, rgba(45, 45, 45, 0.1), rgba(45, 45, 45, 0.05), transparent);
+  }
+
+  .acf-cta__heading {
+    font-size: clamp(2rem, 5vw, 3.75rem);
+    font-weight: 700;
+    color: var(--acf-fg);
+    margin-bottom: 1rem;
+  }
+
+  .acf-cta__sub {
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    color: var(--acf-muted-fg);
+    margin-bottom: 2.5rem;
+  }
+
+  .acf-cta__guarantees {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 2rem;
+    color: var(--acf-muted-fg);
+    flex-wrap: wrap;
+  }
+
+  .acf-cta__guarantee {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .acf-cta__guarantee svg {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--acf-primary);
+  }
+
+  /* ===== SVG Icons (inline) ===== */
+  .acf-icon-star {
+    display: inline-block;
+  }
+</style>
+
+<div class="acf-root" id="arab-coach-funnel">
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="acf-hero">
+    <div class="acf-hero__overlay"></div>
+    <div class="acf-container">
+      <div class="acf-hero__grid">
+
+        <!-- Right Side - Content -->
+        <div class="acf-hero__content">
+          <div class="acf-animate acf-animate--scale" data-acf-delay="200">
+            <span class="acf-hero__badge">✨ عرض محدود لفترة قصيرة</span>
+          </div>
+
+          <h1 class="acf-hero__title acf-animate acf-animate--fade-up" data-acf-delay="300">
+            حول حياتك من العادية إلى الاستثنائية في 90 يوماً فقط
+          </h1>
+
+          <div class="acf-hero__subtitle acf-animate acf-animate--visible" data-acf-delay="0" id="acf-text-generate">
+            <!-- Words injected by JS -->
+          </div>
+
+          <div class="acf-btn-group acf-animate acf-animate--fade-up" data-acf-delay="600">
+            <a href="#" class="acf-btn acf-btn--primary" id="acf-cta-btn">احجز استشارتك المجانية الآن</a>
+            <a href="#" class="acf-btn acf-btn--outline">شاهد الفيديو التعريفي</a>
+          </div>
+
+          <!-- Stats -->
+          <div class="acf-stats">
+            <div class="acf-stat acf-animate acf-animate--fade-up" data-acf-delay="700">
+              <div class="acf-stat__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <div class="acf-stat__value">+500</div>
+              <div class="acf-stat__label">عميل راضٍ</div>
+            </div>
+            <div class="acf-stat acf-animate acf-animate--fade-up" data-acf-delay="800">
+              <div class="acf-stat__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+              </div>
+              <div class="acf-stat__value">15+</div>
+              <div class="acf-stat__label">سنة خبرة</div>
+            </div>
+            <div class="acf-stat acf-animate acf-animate--fade-up" data-acf-delay="900">
+              <div class="acf-stat__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              </div>
+              <div class="acf-stat__value">98%</div>
+              <div class="acf-stat__label">نسبة نجاح</div>
+            </div>
+            <div class="acf-stat acf-animate acf-animate--fade-up" data-acf-delay="1000">
+              <div class="acf-stat__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div class="acf-stat__value">24/7</div>
+              <div class="acf-stat__label">دعم مستمر</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left Side - Coach Image -->
+        <div class="acf-coach acf-animate acf-animate--scale" data-acf-delay="400">
+          <div class="acf-coach__glow"></div>
+          <img
+            src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=400&h=400&fit=crop"
+            alt="د. محمد العربي"
+            class="acf-coach__img"
+          />
+          <div class="acf-coach__card">
+            <div class="acf-coach__name">د. محمد العربي</div>
+            <div class="acf-coach__title">مدرب تطوير الذات والقيادة</div>
+            <div class="acf-coach__stars">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <span class="acf-coach__rating">(500+ تقييم)</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BENEFITS SECTION ===== -->
+  <section class="acf-benefits">
+    <div class="acf-container acf-container--md">
+      <div class="acf-text-center" style="margin-bottom: 3rem;">
+        <h2 class="acf-benefits__heading acf-animate acf-animate--fade-up" data-acf-delay="0">ماذا ستحصل عليه؟</h2>
+        <p class="acf-benefits__sub acf-animate acf-animate--fade-up" data-acf-delay="100">برنامج شامل مصمم خصيصاً لتحقيق أهدافك</p>
+      </div>
+      <div class="acf-benefits__grid" id="acf-benefits-grid">
+        <!-- Benefits injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS SECTION ===== -->
+  <section class="acf-testimonials">
+    <div class="acf-container acf-container--md">
+      <div class="acf-text-center" style="margin-bottom: 3rem;">
+        <h2 class="acf-testimonials__heading acf-animate acf-animate--fade-up" data-acf-delay="0">قصص نجاح عملائنا</h2>
+        <p class="acf-testimonials__sub acf-animate acf-animate--fade-up" data-acf-delay="100">اكتشف كيف غيّر برنامجنا حياة المئات</p>
+      </div>
+      <div class="acf-testimonials__grid" id="acf-testimonials-grid">
+        <!-- Testimonials injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA SECTION ===== -->
+  <section class="acf-cta">
+    <div class="acf-container acf-container--sm acf-text-center">
+      <h2 class="acf-cta__heading acf-animate acf-animate--fade-up" data-acf-delay="0">هل أنت مستعد للتغيير؟</h2>
+      <p class="acf-cta__sub acf-animate acf-animate--fade-up" data-acf-delay="100">انضم إلى مئات الأشخاص الذين حققوا أهدافهم معنا</p>
+      <div class="acf-animate acf-animate--fade-up" data-acf-delay="200">
+        <a href="#" class="acf-btn acf-btn--primary acf-btn--large" id="acf-cta-btn-bottom">ابدأ رحلتك الآن</a>
+      </div>
+      <div class="acf-cta__guarantees acf-animate acf-animate--fade-up" data-acf-delay="300">
+        <div class="acf-cta__guarantee">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>بدون التزام طويل الأمد</span>
+        </div>
+        <div class="acf-cta__guarantee">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>ضمان استرجاع المال</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function() {
+  "use strict";
+
+  // ===== CONFIGURATION =====
+  // Edit these values to customize the funnel
+  var CONFIG = {
+    subtitleText: "اكتشف إمكانياتك الحقيقية وحقق أهدافك مع برنامج تدريبي شامل ومخصص",
+    benefits: [
+      "برنامج مخصص يناسب احتياجاتك الشخصية",
+      "جلسات فردية مع المدرب مباشرة",
+      "أدوات وموارد حصرية للتطوير",
+      "متابعة مستمرة وتقييم دوري",
+      "مجتمع داعم من المتدربين",
+      "ضمان استرجاع المال خلال 30 يوم"
+    ],
+    testimonials: [
+      {
+        name: "أحمد محمد",
+        role: "رائد أعمال",
+        content: "تغيرت حياتي بالكامل بعد العمل مع هذا المدرب. النتائج كانت مذهلة!",
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop"
+      },
+      {
+        name: "فاطمة علي",
+        role: "مديرة تنفيذية",
+        content: "أفضل استثمار قمت به في نفسي. الجلسات كانت تحويلية حقاً",
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop"
+      },
+      {
+        name: "خالد السعيد",
+        role: "مستشار مالي",
+        content: "منهجية واضحة ونتائج ملموسة. أنصح الجميع بهذه التجربة",
+        rating: 5,
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop"
+      }
+    ]
+  };
+
+  // ===== SVG Templates =====
+  var checkSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  var starSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
+
+  // ===== Text Generate Effect =====
+  function initTextGenerate() {
+    var container = document.getElementById("acf-text-generate");
+    if (!container) return;
+
+    var words = CONFIG.subtitleText.split(" ");
+    words.forEach(function(word, idx) {
+      var span = document.createElement("span");
+      span.textContent = word + " ";
+      container.appendChild(span);
+      setTimeout(function() {
+        span.classList.add("acf-word--visible");
+      }, 400 + idx * 200);
+    });
+  }
+
+  // ===== Render Benefits =====
+  function renderBenefits() {
+    var grid = document.getElementById("acf-benefits-grid");
+    if (!grid) return;
+
+    CONFIG.benefits.forEach(function(benefit, idx) {
+      var div = document.createElement("div");
+      div.className = "acf-benefit acf-animate acf-animate--fade-right";
+      div.setAttribute("data-acf-delay", String(200 + idx * 100));
+      div.innerHTML =
+        '<div class="acf-benefit__icon">' + checkSvg + '</div>' +
+        '<p class="acf-benefit__text">' + benefit + '</p>';
+      grid.appendChild(div);
+    });
+  }
+
+  // ===== Render Testimonials =====
+  function renderTestimonials() {
+    var grid = document.getElementById("acf-testimonials-grid");
+    if (!grid) return;
+
+    CONFIG.testimonials.forEach(function(t, idx) {
+      var stars = "";
+      for (var i = 0; i < t.rating; i++) {
+        stars += starSvg;
+      }
+
+      var div = document.createElement("div");
+      div.className = "acf-testimonial acf-animate acf-animate--fade-up";
+      div.setAttribute("data-acf-delay", String(200 + idx * 150));
+      div.innerHTML =
+        '<div class="acf-testimonial__header">' +
+          '<img src="' + t.image + '" alt="' + t.name + '" class="acf-testimonial__img" />' +
+          '<div>' +
+            '<div class="acf-testimonial__name">' + t.name + '</div>' +
+            '<div class="acf-testimonial__role">' + t.role + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="acf-testimonial__stars">' + stars + '</div>' +
+        '<p class="acf-testimonial__content">' + t.content + '</p>';
+      grid.appendChild(div);
+    });
+  }
+
+  // ===== Scroll-based Reveal Animation =====
+  function initScrollAnimations() {
+    var elements = document.querySelectorAll(".acf-animate:not(.acf-animate--visible)");
+
+    if ("IntersectionObserver" in window) {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            var delay = parseInt(el.getAttribute("data-acf-delay") || "0", 10);
+            setTimeout(function() {
+              el.classList.add("acf-animate--visible");
+            }, delay);
+            observer.unobserve(el);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      elements.forEach(function(el) {
+        observer.observe(el);
+      });
+    } else {
+      // Fallback: show everything immediately
+      elements.forEach(function(el) {
+        el.classList.add("acf-animate--visible");
+      });
+    }
+  }
+
+  // ===== Initialize =====
+  function init() {
+    renderBenefits();
+    renderTestimonials();
+    initTextGenerate();
+
+    // Small delay to let DOM settle, then start animations
+    setTimeout(initScrollAnimations, 100);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+</script>
