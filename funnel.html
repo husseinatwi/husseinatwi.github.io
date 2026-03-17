@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elevate Your Business | Modern Funnel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ========== RESET & BASE ========== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #1a1a2e;
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ========== VARIABLES ========== */
+    :root {
+      --primary: #6c3ce0;
+      --primary-dark: #5a2dc5;
+      --primary-light: #ede5ff;
+      --accent: #f97316;
+      --accent-dark: #ea680c;
+      --dark: #0f172a;
+      --gray-900: #1e293b;
+      --gray-700: #334155;
+      --gray-500: #64748b;
+      --gray-300: #cbd5e1;
+      --gray-100: #f1f5f9;
+      --white: #ffffff;
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+      --shadow-glow: 0 0 60px rgba(108,60,224,0.15);
+      --max-width: 1200px;
+    }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+    /* ========== NAVIGATION ========== */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: box-shadow 0.3s ease;
+    }
+    .nav.scrolled { box-shadow: var(--shadow-md); }
+    .nav-inner {
+      max-width: var(--max-width); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-size: 1.5rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      font-size: 0.925rem; font-weight: 500; color: var(--gray-700);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-cta {
+      padding: 10px 24px; border-radius: 50px;
+      background: var(--primary); color: var(--white) !important;
+      font-weight: 600; font-size: 0.9rem;
+      transition: background 0.2s, transform 0.2s;
+      -webkit-text-fill-color: var(--white) !important;
+    }
+    .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 8px;
+    }
+    .nav-hamburger span {
+      width: 24px; height: 2px; background: var(--dark);
+      border-radius: 2px; transition: 0.3s;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      padding: 160px 0 100px;
+      background: linear-gradient(180deg, var(--primary-light) 0%, var(--white) 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -200px; right: -200px;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,60,224,0.08) 0%, transparent 70%);
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -100px; left: -100px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%);
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 16px; border-radius: 50px;
+      background: var(--white); border: 1px solid var(--gray-300);
+      font-size: 0.85rem; font-weight: 500; color: var(--gray-700);
+      margin-bottom: 20px; box-shadow: var(--shadow-sm);
+    }
+    .hero-badge span { color: var(--primary); font-weight: 700; }
+    .hero h1 {
+      font-size: 3.5rem; font-weight: 900; line-height: 1.1;
+      color: var(--dark); margin-bottom: 20px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--primary), #a855f7);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem; color: var(--gray-500);
+      margin-bottom: 36px; max-width: 520px; line-height: 1.7;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 16px 36px; border-radius: 50px;
+      background: var(--primary); color: var(--white);
+      font-weight: 700; font-size: 1rem;
+      transition: all 0.3s; border: none; cursor: pointer;
+      box-shadow: 0 4px 20px rgba(108,60,224,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark); transform: translateY(-2px);
+      box-shadow: 0 6px 30px rgba(108,60,224,0.4);
+    }
+    .btn-secondary {
+      padding: 16px 36px; border-radius: 50px;
+      background: var(--white); color: var(--dark);
+      font-weight: 600; font-size: 1rem;
+      border: 2px solid var(--gray-300);
+      transition: all 0.3s; cursor: pointer;
+    }
+    .btn-secondary:hover {
+      border-color: var(--primary); color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .hero-visual {
+      position: relative; display: flex;
+      align-items: center; justify-content: center;
+    }
+    .hero-card {
+      width: 100%; max-width: 480px;
+      background: var(--white); border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg); padding: 32px; position: relative;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .hero-card::before {
+      content: ''; position: absolute; inset: -2px;
+      border-radius: calc(var(--radius-lg) + 2px);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      z-index: -1; opacity: 0.3;
+    }
+    .hero-card-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+    }
+    .hero-card-dot {
+      width: 12px; height: 12px; border-radius: 50%;
+    }
+    .hero-card-dot:nth-child(1) { background: #ef4444; }
+    .hero-card-dot:nth-child(2) { background: #eab308; }
+    .hero-card-dot:nth-child(3) { background: #22c55e; }
+    .hero-card-bar {
+      height: 12px; border-radius: 6px; margin-bottom: 12px;
+    }
+    .hero-card-bar:nth-child(2) { width: 100%; background: linear-gradient(90deg, var(--primary-light), rgba(108,60,224,0.1)); }
+    .hero-card-bar:nth-child(3) { width: 75%; background: var(--gray-100); }
+    .hero-card-bar:nth-child(4) { width: 90%; background: var(--gray-100); }
+    .hero-card-bar:nth-child(5) { width: 60%; background: linear-gradient(90deg, rgba(249,115,22,0.15), rgba(249,115,22,0.05)); }
+    .hero-card-chart {
+      display: flex; align-items: flex-end; gap: 8px;
+      height: 100px; margin-top: 20px; padding-top: 16px;
+      border-top: 1px solid var(--gray-100);
+    }
+    .hero-card-chart div {
+      flex: 1; border-radius: 6px 6px 0 0;
+      background: linear-gradient(180deg, var(--primary), rgba(108,60,224,0.4));
+      transition: height 0.5s ease;
+    }
+    .hero-stats {
+      display: flex; gap: 40px; margin-top: 48px;
+    }
+    .hero-stats div { text-align: left; }
+    .hero-stats strong {
+      display: block; font-size: 1.5rem; font-weight: 800; color: var(--dark);
+    }
+    .hero-stats small { font-size: 0.85rem; color: var(--gray-500); }
+
+    /* ========== LOGOS / TRUST BAR ========== */
+    .trust-bar {
+      padding: 60px 0; border-bottom: 1px solid var(--gray-100);
+    }
+    .trust-bar p {
+      text-align: center; font-size: 0.875rem; font-weight: 500;
+      color: var(--gray-500); text-transform: uppercase; letter-spacing: 2px;
+      margin-bottom: 32px;
+    }
+    .trust-logos {
+      display: flex; justify-content: center; align-items: center;
+      gap: 48px; flex-wrap: wrap; opacity: 0.5;
+    }
+    .trust-logos span {
+      font-size: 1.25rem; font-weight: 800; color: var(--gray-700);
+      letter-spacing: -0.5px;
+    }
+
+    /* ========== FEATURES ========== */
+    .features { padding: 100px 0; }
+    .section-label {
+      display: inline-block; padding: 6px 16px; border-radius: 50px;
+      background: var(--primary-light); color: var(--primary);
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; margin-bottom: 16px;
+    }
+    .section-title {
+      font-size: 2.5rem; font-weight: 800; color: var(--dark);
+      margin-bottom: 16px; line-height: 1.2;
+    }
+    .section-subtitle {
+      font-size: 1.1rem; color: var(--gray-500);
+      max-width: 600px; margin-bottom: 60px; line-height: 1.7;
+    }
+    .section-header-center {
+      text-align: center;
+    }
+    .section-header-center .section-subtitle {
+      margin-left: auto; margin-right: auto;
+    }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .feature-card {
+      padding: 36px; border-radius: var(--radius);
+      background: var(--white); border: 1px solid var(--gray-100);
+      transition: all 0.3s;
+    }
+    .feature-card:hover {
+      border-color: rgba(108,60,224,0.2);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .feature-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; font-size: 1.5rem;
+    }
+    .feature-icon.purple { background: var(--primary-light); }
+    .feature-icon.orange { background: #fff7ed; }
+    .feature-icon.green { background: #f0fdf4; }
+    .feature-icon.blue { background: #eff6ff; }
+    .feature-icon.pink { background: #fdf2f8; }
+    .feature-icon.yellow { background: #fefce8; }
+    .feature-card h3 {
+      font-size: 1.15rem; font-weight: 700; color: var(--dark);
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-size: 0.95rem; color: var(--gray-500); line-height: 1.6;
+    }
+
+    /* ========== TESTIMONIALS ========== */
+    .testimonials {
+      padding: 100px 0;
+      background: var(--gray-100);
+    }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .testimonial-card {
+      padding: 32px; border-radius: var(--radius);
+      background: var(--white); box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.04);
+      transition: all 0.3s;
+    }
+    .testimonial-card:hover {
+      box-shadow: var(--shadow-md); transform: translateY(-4px);
+    }
+    .testimonial-stars { margin-bottom: 16px; font-size: 1.1rem; color: #f59e0b; }
+    .testimonial-card blockquote {
+      font-size: 0.95rem; color: var(--gray-700); line-height: 1.7;
+      margin-bottom: 24px; font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 700; color: var(--white);
+    }
+    .testimonial-author-info h4 {
+      font-size: 0.9rem; font-weight: 700; color: var(--dark);
+    }
+    .testimonial-author-info p {
+      font-size: 0.8rem; color: var(--gray-500);
+    }
+
+    /* ========== PRICING ========== */
+    .pricing { padding: 100px 0; }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+      align-items: start;
+    }
+    .pricing-card {
+      padding: 40px; border-radius: var(--radius-lg);
+      background: var(--white); border: 2px solid var(--gray-100);
+      transition: all 0.3s; position: relative;
+    }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .pricing-card.popular {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-glow);
+    }
+    .pricing-popular-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      padding: 6px 20px; border-radius: 50px;
+      background: var(--primary); color: var(--white);
+      font-size: 0.8rem; font-weight: 700; white-space: nowrap;
+    }
+    .pricing-card h3 {
+      font-size: 1.1rem; font-weight: 600; color: var(--gray-500);
+      margin-bottom: 8px;
+    }
+    .pricing-amount {
+      font-size: 3rem; font-weight: 900; color: var(--dark);
+      margin-bottom: 4px; line-height: 1;
+    }
+    .pricing-amount span { font-size: 1rem; font-weight: 500; color: var(--gray-500); }
+    .pricing-desc {
+      font-size: 0.9rem; color: var(--gray-500);
+      margin-bottom: 28px; padding-bottom: 28px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .pricing-features { margin-bottom: 32px; }
+    .pricing-features li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.925rem; color: var(--gray-700);
+      padding: 8px 0;
+    }
+    .pricing-features li::before {
+      content: '✓'; display: flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #f0fdf4; color: #22c55e;
+      font-size: 0.75rem; font-weight: 700; flex-shrink: 0;
+    }
+    .pricing-btn {
+      display: block; width: 100%; padding: 14px;
+      border-radius: 50px; text-align: center;
+      font-weight: 700; font-size: 0.95rem;
+      transition: all 0.3s; cursor: pointer; border: none;
+    }
+    .pricing-btn-outline {
+      background: var(--white); color: var(--dark);
+      border: 2px solid var(--gray-300);
+    }
+    .pricing-btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+    .pricing-btn-filled {
+      background: var(--primary); color: var(--white);
+      box-shadow: 0 4px 15px rgba(108,60,224,0.3);
+    }
+    .pricing-btn-filled:hover {
+      background: var(--primary-dark);
+      box-shadow: 0 6px 25px rgba(108,60,224,0.4);
+    }
+
+    /* ========== CTA SECTION ========== */
+    .cta-section {
+      padding: 100px 0;
+      background: linear-gradient(135deg, var(--dark) 0%, #1e1b4b 100%);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 800px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(108,60,224,0.2) 0%, transparent 60%);
+    }
+    .cta-section h2 {
+      font-size: 2.75rem; font-weight: 900; color: var(--white);
+      margin-bottom: 16px; position: relative;
+    }
+    .cta-section p {
+      font-size: 1.15rem; color: rgba(255,255,255,0.6);
+      margin-bottom: 40px; max-width: 550px;
+      margin-left: auto; margin-right: auto; position: relative;
+    }
+    .cta-section .btn-primary {
+      font-size: 1.1rem; padding: 18px 48px; position: relative;
+    }
+
+    /* ========== FOOTER ========== */
+    .footer {
+      padding: 80px 0 40px;
+      background: var(--dark); color: rgba(255,255,255,0.5);
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 60px;
+    }
+    .footer-brand .nav-logo { margin-bottom: 16px; display: inline-block; }
+    .footer-brand p {
+      font-size: 0.9rem; line-height: 1.7; max-width: 320px;
+    }
+    .footer-col h4 {
+      color: var(--white); font-size: 0.9rem; font-weight: 700;
+      margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
+    }
+    .footer-col a {
+      display: block; font-size: 0.9rem; color: rgba(255,255,255,0.5);
+      padding: 6px 0; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.85rem;
+    }
+    .footer-socials { display: flex; gap: 16px; }
+    .footer-socials a {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s; font-size: 0.9rem;
+    }
+    .footer-socials a:hover { background: var(--primary); color: var(--white); }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 1024px) {
+      .hero h1 { font-size: 2.75rem; }
+      .features-grid, .testimonials-grid, .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.active {
+        display: flex; flex-direction: column; position: absolute;
+        top: 72px; left: 0; right: 0;
+        background: var(--white); padding: 24px;
+        box-shadow: var(--shadow-md); gap: 16px;
+      }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { display: none; }
+      .hero-stats { justify-content: center; }
+      .hero h1 { font-size: 2.25rem; }
+      .section-title { font-size: 2rem; }
+      .features-grid, .testimonials-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+      .cta-section h2 { font-size: 2rem; }
+    }
+
+    /* ========== GHL MOBILE COMPAT ========== */
+    .--mobile .hero-inner { grid-template-columns: 1fr; }
+    .--mobile .features-grid,
+    .--mobile .testimonials-grid,
+    .--mobile .pricing-grid { grid-template-columns: 1fr; }
+    .--mobile .hero-visual { display: none; }
+
+    /* ========== ANIMATIONS ========== */
+    .fade-in {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Elevate</a>
+    <div class="nav-links" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact" class="nav-cta">Get Started</a>
+    </div>
+    <button class="nav-hamburger" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="fade-in">
+        <div class="hero-badge">
+          <span>NEW</span> Introducing AI-Powered Automation
+        </div>
+        <h1>Scale Your Business <br><span class="highlight">Without Limits</span></h1>
+        <p>Streamline your operations, automate your marketing, and close more deals with the all-in-one platform built for ambitious businesses.</p>
+        <div class="hero-actions">
+          <a href="#pricing" class="btn-primary">Start Free Trial</a>
+          <a href="#features" class="btn-secondary">See How It Works</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>10K+</strong><small>Active Users</small></div>
+          <div><strong>95%</strong><small>Satisfaction</small></div>
+          <div><strong>3x</strong><small>Revenue Growth</small></div>
+        </div>
+      </div>
+      <div class="hero-visual fade-in">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="hero-card-dot"></div>
+            <div class="hero-card-dot"></div>
+            <div class="hero-card-dot"></div>
+          </div>
+          <div class="hero-card-bar"></div>
+          <div class="hero-card-bar"></div>
+          <div class="hero-card-bar"></div>
+          <div class="hero-card-bar"></div>
+          <div class="hero-card-chart" id="heroChart"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TRUST BAR ========== -->
+<section class="trust-bar fade-in">
+  <div class="container">
+    <p>Trusted by industry leaders</p>
+    <div class="trust-logos">
+      <span>Stripe</span>
+      <span>Shopify</span>
+      <span>HubSpot</span>
+      <span>Notion</span>
+      <span>Slack</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FEATURES ========== -->
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header-center fade-in">
+      <span class="section-label">Features</span>
+      <h2 class="section-title">Everything You Need to Grow</h2>
+      <p class="section-subtitle">Powerful tools designed to help you capture leads, close deals, and scale your business effortlessly.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-in">
+        <div class="feature-icon purple">&#9881;</div>
+        <h3>Marketing Automation</h3>
+        <p>Set up automated email and SMS sequences that nurture leads while you sleep. Smart triggers ensure the right message at the right time.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon orange">&#9733;</div>
+        <h3>CRM & Pipeline</h3>
+        <p>Track every lead from first touch to closed deal. Visual pipelines give you a clear view of your sales process and revenue forecast.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon green">&#10003;</div>
+        <h3>Funnel Builder</h3>
+        <p>Create high-converting landing pages and sales funnels with our drag-and-drop builder. No coding required.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon blue">&#9993;</div>
+        <h3>Unified Inbox</h3>
+        <p>Manage all conversations from email, SMS, social media, and live chat in one centralized inbox for faster response times.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon pink">&#9829;</div>
+        <h3>Reputation Management</h3>
+        <p>Automatically request and manage reviews across Google, Facebook, and more. Build trust and attract new customers.</p>
+      </div>
+      <div class="feature-card fade-in">
+        <div class="feature-icon yellow">&#9889;</div>
+        <h3>Analytics & Reporting</h3>
+        <p>Real-time dashboards that show exactly what's working. Track ROI, conversion rates, and campaign performance at a glance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIALS ========== -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header-center fade-in">
+      <span class="section-label">Testimonials</span>
+      <h2 class="section-title">Loved by Thousands of Businesses</h2>
+      <p class="section-subtitle">See what our customers have to say about their experience with Elevate.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"This platform completely transformed how we manage our sales pipeline. We've tripled our close rate in just three months."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #6c3ce0, #a855f7);">S</div>
+          <div class="testimonial-author-info">
+            <h4>Sarah Mitchell</h4>
+            <p>CEO, GrowthLab Agency</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"The automation features alone saved our team 20+ hours per week. Now we focus on what matters most - closing deals."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #f97316, #fb923c);">M</div>
+          <div class="testimonial-author-info">
+            <h4>Marcus Chen</h4>
+            <p>Founder, ScaleUp Digital</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>"We replaced five different tools with Elevate. It's easier to manage, costs less, and delivers better results across the board."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background: linear-gradient(135deg, #22c55e, #4ade80);">J</div>
+          <div class="testimonial-author-info">
+            <h4>Jessica Torres</h4>
+            <p>Director, BrightPath Marketing</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRICING ========== -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-header-center fade-in">
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title">Simple, Transparent Pricing</h2>
+      <p class="section-subtitle">No hidden fees, no contracts. Start free and upgrade as you grow.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-in">
+        <h3>Starter</h3>
+        <div class="pricing-amount">$49<span>/mo</span></div>
+        <p class="pricing-desc">Perfect for solopreneurs and small teams getting started.</p>
+        <ul class="pricing-features">
+          <li>Up to 1,000 contacts</li>
+          <li>Email & SMS campaigns</li>
+          <li>Basic funnel builder</li>
+          <li>CRM pipeline</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#contact" class="pricing-btn pricing-btn-outline">Get Started</a>
+      </div>
+      <div class="pricing-card popular fade-in">
+        <div class="pricing-popular-badge">Most Popular</div>
+        <h3>Professional</h3>
+        <div class="pricing-amount">$149<span>/mo</span></div>
+        <p class="pricing-desc">Ideal for growing businesses ready to scale operations.</p>
+        <ul class="pricing-features">
+          <li>Up to 10,000 contacts</li>
+          <li>Advanced automation</li>
+          <li>Unlimited funnels</li>
+          <li>Reputation management</li>
+          <li>Priority support</li>
+          <li>Analytics dashboard</li>
+        </ul>
+        <a href="#contact" class="pricing-btn pricing-btn-filled">Get Started</a>
+      </div>
+      <div class="pricing-card fade-in">
+        <h3>Enterprise</h3>
+        <div class="pricing-amount">$399<span>/mo</span></div>
+        <p class="pricing-desc">For agencies and large teams with advanced needs.</p>
+        <ul class="pricing-features">
+          <li>Unlimited contacts</li>
+          <li>White-label branding</li>
+          <li>API access</li>
+          <li>Custom integrations</li>
+          <li>Dedicated account manager</li>
+          <li>SLA guarantee</li>
+        </ul>
+        <a href="#contact" class="pricing-btn pricing-btn-outline">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="cta-section" id="contact">
+  <div class="container fade-in">
+    <h2>Ready to Elevate Your Business?</h2>
+    <p>Join 10,000+ businesses already growing faster with our platform. Start your free 14-day trial today.</p>
+    <a href="#" class="btn-primary">Start Your Free Trial</a>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Elevate</a>
+        <p>The all-in-one platform to capture leads, automate marketing, and grow your business without limits.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#">Integrations</a>
+        <a href="#">Changelog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Elevate. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Twitter">&#120143;</a>
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">&#9741;</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+  });
+
+  // Close mobile nav on link click
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('active'));
+  });
+
+  // Hero chart bars animation
+  const chartContainer = document.getElementById('heroChart');
+  const heights = [40, 60, 35, 80, 55, 95, 70, 85];
+  heights.forEach(h => {
+    const bar = document.createElement('div');
+    bar.style.height = h + '%';
+    chartContainer.appendChild(bar);
+  });
+
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
