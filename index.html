@@ -3,247 +3,555 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Maharat - Learn Without Limits</title>
+  <title>Sarah Mitchell - Life Coach | Transform Your Life Today</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
+            serif: ['Playfair Display', 'Georgia', 'serif'],
             sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            warm: {
+              50: '#fdf8f0',
+              100: '#f9edd8',
+              200: '#f3d9b0',
+              300: '#e9be7e',
+              400: '#dfa04e',
+              500: '#d4862f',
+              600: '#c06b24',
+              700: '#9f5120',
+              800: '#814222',
+              900: '#6a381e',
+            },
           },
         },
       },
     }
   </script>
   <style>
-    .hero-gradient {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    html { scroll-behavior: smooth; }
+    .hero-bg {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
     }
-    .glow {
-      background: radial-gradient(ellipse at 50% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 60%);
+    .warm-gradient {
+      background: linear-gradient(135deg, #d4862f 0%, #dfa04e 50%, #e9be7e 100%);
     }
-    .card-hover {
+    .section-light {
+      background: linear-gradient(180deg, #fdf8f0 0%, #ffffff 100%);
+    }
+    .testimonial-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .card-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
     }
-    .animate-float {
-      animation: float 6s ease-in-out infinite;
+    .animate-fade-up {
+      animation: fadeUp 0.8s ease-out forwards;
+      opacity: 0;
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-20px); }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .countdown-box {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
     }
   </style>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased text-gray-800">
 
-  <!-- Header / Navigation -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-slate-900/80 backdrop-blur-lg border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <!-- Logo -->
-        <a href="#" class="flex items-center gap-2">
-          <div class="w-8 h-8 bg-indigo-500 rounded-lg flex items-center justify-center">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-            </svg>
-          </div>
-          <span class="text-xl font-bold text-white">Maharat</span>
-        </a>
+  <!-- Sticky Top Bar -->
+  <div class="bg-warm-600 text-white text-center py-2 text-sm font-medium tracking-wide">
+    Limited spots available — Free Discovery Call ends soon!
+  </div>
 
-        <!-- Desktop Nav -->
-        <nav class="hidden md:flex items-center gap-8">
-          <a href="#" class="text-sm text-slate-300 hover:text-white transition-colors">Courses</a>
-          <a href="#" class="text-sm text-slate-300 hover:text-white transition-colors">Paths</a>
-          <a href="#" class="text-sm text-slate-300 hover:text-white transition-colors">Pricing</a>
-          <a href="#" class="text-sm text-slate-300 hover:text-white transition-colors">For Teams</a>
-        </nav>
-
-        <!-- CTA Buttons -->
-        <div class="flex items-center gap-3">
-          <a href="#" class="hidden sm:inline-flex text-sm text-slate-300 hover:text-white transition-colors">Log in</a>
-          <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg transition-colors">
-            Start Free Trial
-          </a>
-        </div>
-      </div>
+  <!-- Navigation -->
+  <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="#" class="font-serif text-2xl font-bold text-gray-900">Sarah <span class="text-warm-500">Mitchell</span></a>
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm text-gray-600 hover:text-warm-600 transition-colors">About</a>
+        <a href="#services" class="text-sm text-gray-600 hover:text-warm-600 transition-colors">Services</a>
+        <a href="#testimonials" class="text-sm text-gray-600 hover:text-warm-600 transition-colors">Results</a>
+        <a href="#faq" class="text-sm text-gray-600 hover:text-warm-600 transition-colors">FAQ</a>
+      </nav>
+      <a href="#book" class="inline-flex items-center px-5 py-2.5 text-sm font-semibold text-white bg-warm-500 hover:bg-warm-600 rounded-full transition-colors shadow-lg shadow-warm-500/25">
+        Book Free Call
+      </a>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-gradient relative overflow-hidden min-h-screen flex items-center">
-    <!-- Background glow effect -->
-    <div class="glow absolute inset-0 pointer-events-none"></div>
-
-    <!-- Floating decorative elements -->
-    <div class="absolute top-32 left-10 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl animate-float"></div>
-    <div class="absolute bottom-20 right-10 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-float" style="animation-delay: -3s;"></div>
-
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero-bg relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-20 left-10 w-96 h-96 bg-warm-400 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-20 w-80 h-80 bg-blue-400 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-
-        <!-- Left Column: Text Content -->
-        <div class="text-center lg:text-left">
-          <!-- Badge -->
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-6">
-            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-            <span class="text-sm text-indigo-300">Over 10,000 students enrolled</span>
-          </div>
-
-          <!-- Heading -->
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
-            Master new skills.
-            <span class="block mt-2 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Advance your career.
-            </span>
+        <div class="text-center lg:text-left animate-fade-up">
+          <p class="inline-block text-warm-300 text-sm font-semibold tracking-widest uppercase mb-4">Certified Life &amp; Mindset Coach</p>
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+            Stop Surviving.<br>
+            <span class="text-warm-400">Start Thriving.</span>
           </h1>
-
-          <!-- Subheading -->
-          <p class="mt-6 text-lg text-slate-400 max-w-xl mx-auto lg:mx-0">
-            Learn from industry experts with hands-on projects, real-world case studies, and personalized learning paths. From coding to design to business — unlock your potential.
+          <p class="mt-6 text-lg text-gray-300 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+            You deserve a life filled with purpose, confidence, and joy. I help high-achieving professionals break through mental blocks and create the life they've always imagined.
           </p>
-
-          <!-- CTA Buttons -->
           <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a href="#" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-lg shadow-indigo-500/25 transition-all hover:shadow-indigo-500/40">
-              Explore Courses
-              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-              </svg>
-            </a>
-            <a href="#" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl transition-colors">
-              <svg class="mr-2 w-5 h-5 text-indigo-400" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z"/>
-              </svg>
-              Watch Demo
+            <a href="#book" class="inline-flex items-center justify-center px-8 py-4 text-base font-bold text-gray-900 warm-gradient rounded-full shadow-xl hover:shadow-2xl transition-all hover:scale-105">
+              Book Your Free Discovery Call
+              <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
           </div>
-
-          <!-- Trust Indicators -->
-          <div class="mt-10 flex items-center gap-6 justify-center lg:justify-start">
-            <div class="flex -space-x-2">
-              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 border-2 border-slate-900"></div>
-              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 border-2 border-slate-900"></div>
-              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 border-2 border-slate-900"></div>
-              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 border-2 border-slate-900"></div>
-            </div>
-            <div>
-              <div class="flex items-center gap-1">
-                <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                <svg class="w-4 h-4 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              </div>
-              <p class="text-sm text-slate-400 mt-0.5">4.9/5 from 2,400+ reviews</p>
-            </div>
+          <div class="mt-8 flex items-center gap-4 justify-center lg:justify-start text-gray-400 text-sm">
+            <span class="flex items-center gap-1">
+              <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              100% Free
+            </span>
+            <span class="flex items-center gap-1">
+              <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              No obligation
+            </span>
+            <span class="flex items-center gap-1">
+              <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+              30 minutes
+            </span>
           </div>
         </div>
 
-        <!-- Right Column: Course Preview Cards -->
-        <div class="relative hidden lg:block">
-          <div class="grid grid-cols-2 gap-4">
-            <!-- Card 1 -->
-            <div class="card-hover bg-slate-800/60 backdrop-blur border border-slate-700/50 rounded-2xl p-5 mt-8">
-              <div class="w-full h-28 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
-                <svg class="w-10 h-10 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-                </svg>
-              </div>
-              <h3 class="text-white font-semibold">Full-Stack Development</h3>
-              <p class="text-slate-400 text-sm mt-1">42 lessons</p>
-              <div class="flex items-center gap-2 mt-3">
-                <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
-                  <div class="h-full w-3/4 bg-indigo-500 rounded-full"></div>
+        <!-- Hero Image Placeholder -->
+        <div class="hidden lg:flex justify-center">
+          <div class="relative">
+            <div class="w-80 h-96 rounded-3xl bg-gradient-to-br from-warm-300/30 to-warm-500/30 border border-warm-400/20 backdrop-blur flex items-center justify-center">
+              <div class="text-center">
+                <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-warm-400 to-warm-600 flex items-center justify-center mb-4">
+                  <svg class="w-16 h-16 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                  </svg>
                 </div>
-                <span class="text-xs text-slate-400">75%</span>
+                <p class="text-white font-serif text-xl font-semibold">Sarah Mitchell</p>
+                <p class="text-warm-200 text-sm mt-1">ICF Certified Coach</p>
               </div>
             </div>
-
-            <!-- Card 2 -->
-            <div class="card-hover bg-slate-800/60 backdrop-blur border border-slate-700/50 rounded-2xl p-5">
-              <div class="w-full h-28 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mb-4">
-                <svg class="w-10 h-10 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-                </svg>
+            <div class="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
+              <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
               </div>
-              <h3 class="text-white font-semibold">Data Science & AI</h3>
-              <p class="text-slate-400 text-sm mt-1">38 lessons</p>
-              <div class="flex items-center gap-2 mt-3">
-                <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
-                  <div class="h-full w-1/3 bg-emerald-500 rounded-full"></div>
-                </div>
-                <span class="text-xs text-slate-400">33%</span>
+              <div>
+                <p class="text-sm font-bold text-gray-900">500+</p>
+                <p class="text-xs text-gray-500">Lives Transformed</p>
               </div>
             </div>
-
-            <!-- Card 3 -->
-            <div class="card-hover bg-slate-800/60 backdrop-blur border border-slate-700/50 rounded-2xl p-5">
-              <div class="w-full h-28 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center mb-4">
-                <svg class="w-10 h-10 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                </svg>
+            <div class="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl p-4 flex items-center gap-3">
+              <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
+                <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
               </div>
-              <h3 class="text-white font-semibold">UI/UX Design</h3>
-              <p class="text-slate-400 text-sm mt-1">29 lessons</p>
-              <div class="flex items-center gap-2 mt-3">
-                <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
-                  <div class="h-full w-1/2 bg-amber-500 rounded-full"></div>
-                </div>
-                <span class="text-xs text-slate-400">50%</span>
-              </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="card-hover bg-slate-800/60 backdrop-blur border border-slate-700/50 rounded-2xl p-5 mt-8">
-              <div class="w-full h-28 bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl flex items-center justify-center mb-4">
-                <svg class="w-10 h-10 text-white/90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/>
-                </svg>
-              </div>
-              <h3 class="text-white font-semibold">Digital Marketing</h3>
-              <p class="text-slate-400 text-sm mt-1">35 lessons</p>
-              <div class="flex items-center gap-2 mt-3">
-                <div class="flex-1 h-1.5 bg-slate-700 rounded-full overflow-hidden">
-                  <div class="h-full w-[15%] bg-pink-500 rounded-full"></div>
-                </div>
-                <span class="text-xs text-slate-400">15%</span>
+              <div>
+                <p class="text-sm font-bold text-gray-900">4.9/5</p>
+                <p class="text-xs text-gray-500">Client Rating</p>
               </div>
             </div>
           </div>
-        </div>
-
-      </div>
-
-      <!-- Stats Bar -->
-      <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-slate-800 pt-10">
-        <div class="text-center">
-          <p class="text-3xl font-bold text-white">200+</p>
-          <p class="text-sm text-slate-400 mt-1">Expert-led courses</p>
-        </div>
-        <div class="text-center">
-          <p class="text-3xl font-bold text-white">10K+</p>
-          <p class="text-sm text-slate-400 mt-1">Active students</p>
-        </div>
-        <div class="text-center">
-          <p class="text-3xl font-bold text-white">95%</p>
-          <p class="text-sm text-slate-400 mt-1">Completion rate</p>
-        </div>
-        <div class="text-center">
-          <p class="text-3xl font-bold text-white">50+</p>
-          <p class="text-sm text-slate-400 mt-1">Industry mentors</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ==================== PAIN POINTS SECTION ==================== -->
+  <section class="section-light py-20 lg:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-warm-600 font-semibold tracking-widest uppercase text-sm mb-3">Does this sound like you?</p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900">You've achieved so much, yet something still feels <span class="text-warm-500">missing</span>.</h2>
+      <div class="mt-12 grid sm:grid-cols-2 gap-6 text-left">
+        <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100 flex gap-4">
+          <div class="w-10 h-10 flex-shrink-0 bg-red-50 rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900">Burned out &amp; overwhelmed</h3>
+            <p class="text-sm text-gray-500 mt-1">You're running on empty but can't seem to slow down without the guilt creeping in.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100 flex gap-4">
+          <div class="w-10 h-10 flex-shrink-0 bg-red-50 rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900">Lost sense of direction</h3>
+            <p class="text-sm text-gray-500 mt-1">You've been following someone else's roadmap and forgot what you actually want.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100 flex gap-4">
+          <div class="w-10 h-10 flex-shrink-0 bg-red-50 rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900">Self-doubt holds you back</h3>
+            <p class="text-sm text-gray-500 mt-1">Imposter syndrome keeps you playing small, even when you know you're capable of more.</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-6 shadow-md border border-gray-100 flex gap-4">
+          <div class="w-10 h-10 flex-shrink-0 bg-red-50 rounded-full flex items-center justify-center">
+            <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900">Stuck in the same cycle</h3>
+            <p class="text-sm text-gray-500 mt-1">You keep setting goals and falling back into old patterns. Something has to change.</p>
+          </div>
+        </div>
+      </div>
+      <p class="mt-10 text-lg text-gray-600">If you nodded to any of these — <strong class="text-warm-600">you're in the right place.</strong></p>
+    </div>
+  </section>
+
+  <!-- ==================== ABOUT / STORY SECTION ==================== -->
+  <section id="about" class="bg-white py-20 lg:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="bg-gradient-to-br from-warm-50 to-warm-100 rounded-3xl p-10 flex items-center justify-center min-h-[400px]">
+          <div class="text-center">
+            <div class="w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-warm-300 to-warm-500 flex items-center justify-center">
+              <svg class="w-20 h-20 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </div>
+            <p class="mt-6 text-warm-700 font-serif text-lg italic">"Your story is your superpower."</p>
+          </div>
+        </div>
+        <div>
+          <p class="text-warm-600 font-semibold tracking-widest uppercase text-sm mb-3">My Story</p>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900">I've been exactly where you are.</h2>
+          <div class="mt-6 space-y-4 text-gray-600 leading-relaxed">
+            <p>Ten years ago, I was a corporate executive with a six-figure salary, a corner office, and crippling anxiety every single morning. On paper, I had everything. Inside, I was falling apart.</p>
+            <p>The turning point came when I hit rock bottom — a panic attack in a parking lot made me realize I couldn't white-knuckle my way through life anymore. I invested in coaching, therapy, and personal development, and it changed <em>everything</em>.</p>
+            <p>Today, as an ICF-certified coach with 8+ years of experience, I've helped over 500 professionals do what I did — <strong>break free from the autopilot and build a life on their own terms.</strong></p>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-6">
+            <div class="text-center">
+              <p class="text-2xl font-bold text-warm-600">500+</p>
+              <p class="text-xs text-gray-500 mt-1">Clients Coached</p>
+            </div>
+            <div class="text-center">
+              <p class="text-2xl font-bold text-warm-600">8+</p>
+              <p class="text-xs text-gray-500 mt-1">Years Experience</p>
+            </div>
+            <div class="text-center">
+              <p class="text-2xl font-bold text-warm-600">ICF</p>
+              <p class="text-xs text-gray-500 mt-1">Certified (PCC)</p>
+            </div>
+            <div class="text-center">
+              <p class="text-2xl font-bold text-warm-600">3</p>
+              <p class="text-xs text-gray-500 mt-1">Books Published</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SERVICES / WHAT YOU GET ==================== -->
+  <section id="services" class="section-light py-20 lg:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-warm-600 font-semibold tracking-widest uppercase text-sm mb-3">The Transformation Framework</p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900">Here's how we'll work together</h2>
+        <p class="mt-4 text-gray-500">A proven 3-phase system that has helped hundreds go from stuck to unstoppable.</p>
+      </div>
+      <div class="mt-16 grid md:grid-cols-3 gap-8">
+        <!-- Phase 1 -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-1 warm-gradient"></div>
+          <div class="w-14 h-14 bg-warm-50 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl font-bold text-warm-500">1</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-gray-900">Clarity</h3>
+          <p class="mt-3 text-gray-500 text-sm leading-relaxed">We uncover what's really holding you back — limiting beliefs, fears, and patterns you didn't even know were running the show. You'll gain crystal-clear vision of who you want to become.</p>
+          <ul class="mt-5 space-y-2">
+            <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-warm-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Deep-dive assessment</li>
+            <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-warm-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Values alignment exercise</li>
+            <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-warm-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Personal vision blueprint</li>
+          </ul>
+        </div>
+        <!-- Phase 2 -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-1 warm-gradient"></div>
+          <div class="w-14 h-14 bg-warm-50 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl font-bold text-warm-500">2</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-gray-900">Courage</h3>
+          <p class="mt-3 text-gray-500 text-sm leading-relaxed">We rewire the mindset blocks and build unshakable confidence. You'll develop the emotional resilience and self-belief needed to take bold action toward your goals.</p>
+          <ul class="mt-5 space-y-2">
+            <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-warm-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Mindset reprogramming</li>
+            <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-warm-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Boundary-setting tools</li>
+            <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-warm-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Confidence framework</li>
+          </ul>
+        </div>
+        <!-- Phase 3 -->
+        <div class="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-full h-1 warm-gradient"></div>
+          <div class="w-14 h-14 bg-warm-50 rounded-2xl flex items-center justify-center mb-6">
+            <span class="text-2xl font-bold text-warm-500">3</span>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-gray-900">Creation</h3>
+          <p class="mt-3 text-gray-500 text-sm leading-relaxed">We design and execute your personalized action plan. You'll build sustainable habits, achieve meaningful goals, and create a life that excites you to wake up every morning.</p>
+          <ul class="mt-5 space-y-2">
+            <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-warm-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Custom action roadmap</li>
+            <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-warm-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Accountability system</li>
+            <li class="flex items-center gap-2 text-sm text-gray-600"><svg class="w-4 h-4 text-warm-500 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Ongoing support &amp; check-ins</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TESTIMONIALS ==================== -->
+  <section id="testimonials" class="bg-white py-20 lg:py-28">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto">
+        <p class="text-warm-600 font-semibold tracking-widest uppercase text-sm mb-3">Real Results</p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900">What my clients are saying</h2>
+      </div>
+      <div class="mt-14 grid md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card bg-warm-50 rounded-3xl p-8 border border-warm-100">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-gray-700 text-sm leading-relaxed italic">"Sarah helped me leave a toxic job, negotiate a 40% raise at my new company, and finally set boundaries with my family. I went from dreading Mondays to waking up excited. She literally changed my life."</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-indigo-500 flex items-center justify-center text-white font-bold text-sm">JR</div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Jessica R.</p>
+              <p class="text-xs text-gray-500">Marketing Director</p>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card bg-warm-50 rounded-3xl p-8 border border-warm-100">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-gray-700 text-sm leading-relaxed italic">"I was skeptical about coaching, but Sarah's approach is nothing like I expected. It's practical, no-nonsense, and deeply empathetic. In 3 months I launched the business I'd been dreaming about for 5 years."</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white font-bold text-sm">MK</div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Michael K.</p>
+              <p class="text-xs text-gray-500">Entrepreneur</p>
+            </div>
+          </div>
+        </div>
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card bg-warm-50 rounded-3xl p-8 border border-warm-100">
+          <div class="flex gap-1 mb-4">
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg class="w-5 h-5 text-amber-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <p class="text-gray-700 text-sm leading-relaxed italic">"After our 6-month program, I lost 30 pounds, repaired my relationship with my daughter, and got promoted to VP. Sarah doesn't just coach — she holds up a mirror and gives you the tools to transform."</p>
+          <div class="mt-6 flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-400 to-pink-500 flex items-center justify-center text-white font-bold text-sm">AL</div>
+            <div>
+              <p class="text-sm font-semibold text-gray-900">Amanda L.</p>
+              <p class="text-xs text-gray-500">VP of Operations</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PRICING / OFFER SECTION ==================== -->
+  <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 lg:py-28">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <p class="text-warm-400 font-semibold tracking-widest uppercase text-sm mb-3">Investment In Yourself</p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">Choose your transformation path</h2>
+      </div>
+      <div class="mt-14 grid md:grid-cols-2 gap-8">
+        <!-- Starter -->
+        <div class="bg-white/5 backdrop-blur border border-white/10 rounded-3xl p-8">
+          <h3 class="text-lg font-semibold text-white">Ignite</h3>
+          <p class="text-sm text-gray-400 mt-1">Perfect for getting unstuck</p>
+          <div class="mt-6">
+            <span class="text-4xl font-bold text-white">$297</span>
+            <span class="text-gray-400">/month</span>
+          </div>
+          <ul class="mt-8 space-y-3">
+            <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-warm-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>2 coaching sessions/month (60 min)</li>
+            <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-warm-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Email support between sessions</li>
+            <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-warm-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Personalized action plan</li>
+            <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-warm-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Resource library access</li>
+          </ul>
+          <a href="#book" class="mt-8 block text-center px-6 py-3.5 text-sm font-semibold text-white border border-warm-500 hover:bg-warm-500 rounded-full transition-colors">Get Started</a>
+        </div>
+        <!-- Premium -->
+        <div class="bg-gradient-to-br from-warm-500/20 to-warm-600/10 backdrop-blur border-2 border-warm-500 rounded-3xl p-8 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-warm-500 text-white text-xs font-bold px-4 py-1 rounded-full">MOST POPULAR</div>
+          <h3 class="text-lg font-semibold text-white">Transform</h3>
+          <p class="text-sm text-gray-400 mt-1">The full transformation experience</p>
+          <div class="mt-6">
+            <span class="text-4xl font-bold text-white">$597</span>
+            <span class="text-gray-400">/month</span>
+          </div>
+          <ul class="mt-8 space-y-3">
+            <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-warm-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>4 coaching sessions/month (60 min)</li>
+            <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-warm-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Unlimited Voxer/voice support</li>
+            <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-warm-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Full 3-phase framework</li>
+            <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-warm-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Emergency session access</li>
+            <li class="flex items-center gap-3 text-sm text-gray-300"><svg class="w-5 h-5 text-warm-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Exclusive community group</li>
+          </ul>
+          <a href="#book" class="mt-8 block text-center px-6 py-3.5 text-sm font-bold text-gray-900 warm-gradient rounded-full shadow-lg hover:shadow-xl transition-all">Start Your Transformation</a>
+        </div>
+      </div>
+      <p class="text-center text-gray-500 text-sm mt-8">Both plans start with a free Discovery Call. 30-day money-back guarantee.</p>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ SECTION ==================== -->
+  <section id="faq" class="section-light py-20 lg:py-28">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <p class="text-warm-600 font-semibold tracking-widest uppercase text-sm mb-3">FAQ</p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900">Common questions</h2>
+      </div>
+      <div class="space-y-4">
+        <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="font-semibold text-gray-900">Is this coaching or therapy?</span>
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-gray-600 leading-relaxed">Coaching is future-focused. We work on goals, mindset, and action. I'm not a therapist and don't treat clinical conditions. If I think therapy would benefit you more, I'll be upfront about it.</div>
+        </details>
+        <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="font-semibold text-gray-900">How long before I see results?</span>
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-gray-600 leading-relaxed">Most clients experience a mindset shift within the first 2-3 sessions. Tangible life changes typically happen within 60-90 days, depending on your commitment level.</div>
+        </details>
+        <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="font-semibold text-gray-900">What if I'm not sure coaching is right for me?</span>
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-gray-600 leading-relaxed">That's exactly what the free Discovery Call is for. We'll chat for 30 minutes, I'll learn about your situation, and we'll both decide if it's a fit. Zero pressure, zero obligation.</div>
+        </details>
+        <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="font-semibold text-gray-900">Do you work with men and women?</span>
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-gray-600 leading-relaxed">Absolutely. My clients are roughly 60/40 women to men, ranging from age 25 to 60+. What they all have in common is a desire for meaningful change and a willingness to do the work.</div>
+        </details>
+        <details class="group bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="font-semibold text-gray-900">What's your refund policy?</span>
+            <svg class="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-sm text-gray-600 leading-relaxed">I offer a 30-day money-back guarantee. If after 30 days you don't feel you've gotten value, I'll refund your investment — no questions asked. I stand behind my work.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FINAL CTA / BOOKING SECTION ==================== -->
+  <section id="book" class="relative overflow-hidden py-20 lg:py-28" style="background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);">
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-10 right-10 w-80 h-80 bg-warm-400 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 left-10 w-64 h-64 bg-blue-400 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-warm-400 font-semibold tracking-widest uppercase text-sm mb-3">Ready to begin?</p>
+      <h2 class="font-serif text-3xl sm:text-5xl font-bold text-white leading-tight">Your breakthrough is one conversation away.</h2>
+      <p class="mt-6 text-lg text-gray-300 max-w-xl mx-auto">Book your free 30-minute Discovery Call. We'll talk about where you are, where you want to be, and whether working together is the right next step.</p>
+
+      <!-- Booking Form -->
+      <div class="mt-10 bg-white/10 backdrop-blur-md rounded-3xl border border-white/10 p-8 sm:p-10 max-w-lg mx-auto">
+        <form class="space-y-5" onsubmit="event.preventDefault(); document.getElementById('form-success').classList.remove('hidden'); this.classList.add('hidden');">
+          <div>
+            <input type="text" placeholder="Your Full Name" required class="w-full px-5 py-3.5 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-warm-500 focus:border-transparent transition-all">
+          </div>
+          <div>
+            <input type="email" placeholder="Your Email Address" required class="w-full px-5 py-3.5 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-warm-500 focus:border-transparent transition-all">
+          </div>
+          <div>
+            <select required class="w-full px-5 py-3.5 bg-white/10 border border-white/20 rounded-xl text-gray-400 focus:outline-none focus:ring-2 focus:ring-warm-500 focus:border-transparent transition-all">
+              <option value="" disabled selected>What's your biggest challenge?</option>
+              <option>Career transition</option>
+              <option>Burnout & stress</option>
+              <option>Confidence & self-doubt</option>
+              <option>Work-life balance</option>
+              <option>Starting a business</option>
+              <option>Relationships</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <button type="submit" class="w-full py-4 text-base font-bold text-gray-900 warm-gradient rounded-xl shadow-xl hover:shadow-2xl transition-all hover:scale-[1.02]">
+            Book My Free Discovery Call
+          </button>
+        </form>
+        <div id="form-success" class="hidden text-center py-8">
+          <div class="w-16 h-16 mx-auto bg-green-500/20 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <h3 class="text-xl font-bold text-white">You're in!</h3>
+          <p class="text-gray-300 mt-2">Check your email — I'll be in touch within 24 hours to schedule your call.</p>
+        </div>
+        <p class="text-xs text-gray-500 mt-4">Your information is 100% secure. No spam, ever.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-gray-900 border-t border-gray-800 py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <a href="#" class="font-serif text-xl font-bold text-white">Sarah <span class="text-warm-500">Mitchell</span></a>
+          <p class="text-sm text-gray-500 mt-1">Certified Life &amp; Mindset Coach</p>
+        </div>
+        <div class="flex gap-6">
+          <a href="#about" class="text-sm text-gray-500 hover:text-warm-400 transition-colors">About</a>
+          <a href="#services" class="text-sm text-gray-500 hover:text-warm-400 transition-colors">Services</a>
+          <a href="#testimonials" class="text-sm text-gray-500 hover:text-warm-400 transition-colors">Results</a>
+          <a href="#book" class="text-sm text-gray-500 hover:text-warm-400 transition-colors">Book a Call</a>
+        </div>
+        <div class="flex gap-4">
+          <a href="#" class="w-10 h-10 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center transition-colors">
+            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+          </a>
+          <a href="#" class="w-10 h-10 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center transition-colors">
+            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="w-10 h-10 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center transition-colors">
+            <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="mt-8 pt-8 border-t border-gray-800 text-center">
+        <p class="text-xs text-gray-600">&copy; 2026 Sarah Mitchell Coaching. All rights reserved. | <a href="#" class="hover:text-warm-400 transition-colors">Privacy Policy</a> | <a href="#" class="hover:text-warm-400 transition-colors">Terms of Service</a></p>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
