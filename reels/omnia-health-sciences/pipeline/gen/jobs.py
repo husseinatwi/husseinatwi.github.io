@@ -1,0 +1,23 @@
+STYLE = "cinematic film still, dark moody low-key lighting, deep black background, crimson red accent light, high contrast, shallow depth of field, anamorphic bokeh, subtle film grain, ultra realistic, highly detailed"
+NEG = "text, letters, words, watermark, logo, signature, cartoon, illustration, anime, painting, drawing, lowres, blurry, jpeg artifacts, deformed, disfigured, oversaturated, frame, border, ugly"
+NEG_NOTEXT = "watermark, logo, signature, cartoon, anime, lowres, blurry, jpeg artifacts, deformed, frame, border, ugly"
+JOBS = [
+ # key, prompt, negative, seed, steps
+ ("cells_1", "extreme macro photograph inside the human body, smooth round translucent red blood cells and soft glowing cells with visible nucleus floating in dark plasma, bioluminescent crimson glow, volumetric light rays, floating particles, " + STYLE, NEG + ", virus, spikes, coronavirus, bacteria, germs, tentacles", 11, 6),
+ ("capsule_1", "product photography of a single translucent crimson red softgel capsule floating in mid air, glowing from within, tiny suspended golden particles inside, dramatic rim light, wisps of smoke, glossy reflections, black background, macro, high-end commercial, ultra realistic, sharp focus", NEG, 21, 6),
+ ("eye_1", "extreme close-up macro photograph of a human eye, detailed iris texture, eyelashes, a tiny red light reflected in the pupil, face half in shadow, " + STYLE, NEG, 31, 6),
+ ("marketing_1", "busy marketing team in a bright glass office boardroom brainstorming, whiteboard full of sales charts, arrows and sticky notes, people in suits pointing and laughing, harsh fluorescent light, oversaturated colors, candid corporate stock photo", NEG_NOTEXT, 41, 5),
+ ("blueprint_1", "technical patent drawing of a softgel capsule and molecular structures, precise thin crimson red and white line art on matte black paper, engineering blueprint, measurement lines, cross-section diagrams, top-down flat lay, dramatic side light, highly detailed", NEG_NOTEXT, 51, 5),
+ ("journals_1", "stacks of old scientific journals and research papers on a desk in a dark library, loose pages flying through the air, single dramatic spotlight from above, dust particles in the light beam, " + STYLE, NEG, 61, 5),
+ ("network_1", "abstract visualization of an immense glowing network of interconnected nodes and thin lines like a constellation, thousands of tiny crimson red and white points of light connected in depth, deep black space, " + STYLE, NEG, 71, 5),
+ ("vintage_1", "vintage 1970s chemistry laboratory, chalkboard covered with hand drawn molecular structure diagrams, old glassware and flasks on a wooden bench, warm tungsten light, dust in the air, nostalgic kodak film photograph, cinematic, moody", NEG_NOTEXT, 81, 5),
+ ("dna_1", "glowing DNA double helix made of glass and light, crimson red and white, floating in dark space, volumetric haze, " + STYLE, NEG, 91, 5),
+ ("endbg_1", "abstract macro of soft out of focus crimson red glowing cells drifting in deep black, elegant, minimal, bokeh, cinematic, dark, negative space", NEG, 101, 5),
+ ("cells_2", "extreme macro photograph inside the human body, smooth round translucent red blood cells and soft glowing cells with visible nucleus floating in dark plasma, bioluminescent crimson glow, volumetric light rays, floating particles, " + STYLE, NEG + ", virus, spikes, coronavirus, bacteria, germs, tentacles", 12, 6),
+ ("capsule_2", "product photography of a single translucent crimson red softgel capsule floating in mid air, glowing from within, tiny suspended golden particles inside, dramatic rim light, wisps of smoke, glossy reflections, black background, macro, high-end commercial, ultra realistic, sharp focus", NEG, 22, 6),
+ ("pipette_1", "high speed macro photograph of a laboratory pipette releasing a single crimson red droplet into a glass vial, frozen splash, backlit, dark laboratory, " + STYLE, NEG, 111, 5),
+ ("microscope_1", "close-up of a laboratory microscope objective lens and stage in a dark laboratory, crimson red rim light, glass slide with red sample, reflections, " + STYLE, NEG, 121, 5),
+ ("molecules_1", "glossy glass molecular structure model, ball and stick, crimson red and clear glass spheres, floating in dark space, studio lighting, reflections, " + STYLE, NEG, 131, 5),
+ ("hand_1", "a hand holding a single red capsule between thumb and finger under a harsh spotlight in total darkness, chiaroscuro lighting, " + STYLE, NEG, 141, 6),
+ ("labsil_1", "silhouette of a scientist in a lab coat standing in a dark laboratory backlit by crimson red light, volumetric fog, glassware on benches, wide cinematic shot, " + STYLE, NEG, 151, 5),
+]
