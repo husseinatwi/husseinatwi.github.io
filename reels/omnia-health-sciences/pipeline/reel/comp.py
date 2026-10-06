@@ -247,8 +247,8 @@ def s_capsule(t, lt, fi):
     p = plate("capsule_2", "capsule_1")
     dur = 20.15 - 18.5; e = lt / dur
     zoom = lerp(1.06, 1.22, in_out_sine(e)) + 0.9 * in_cubic(ramp(t, 19.7, 20.15)) ** 1.5
-    fa = FA.get("capsule") or FA.setdefault("capsule", FlowAnim(p, "capsule"))
-    src = fa.src(e) if fa.ok else None
+    lf = FA.get("capsule_v") or FA.setdefault("capsule_v", LtxFrames(p, "capsule"))
+    src = lf.src(e) if lf.ok else None
     img = p.render(zoom=zoom, cy=lerp(230, 160, e) * (1 - in_cubic(ramp(t, 19.7, 20.15))), rot=lerp(0, -2.5, e), dolly=0.12, px=lerp(-20, 20, e), focus=0.6, src=src)
     pulse = 0.0
     for hb in HB:

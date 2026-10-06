@@ -22,7 +22,7 @@ A 24.6-second vertical reel for [omniahealthsciences.com](https://omniahealthsci
 | 12.50s | Thirty-three thousand citations. | **33,000+** CITATIONS |
 | 14.75s | His co-founder worked alongside a two-time Nobel laureate. | Prof. Steve Harakeh, then a vintage lab with **2× NOBEL LAUREATE** |
 | 18.50s | Together, they built this. | Capsule hero shot, then a dive into the capsule |
-| 20.40s | Omnia. | Logo slam with a shockwave (after about 0.25 s of total silence) |
+| 20.40s | Omnia. | Logo slam with a shockwave, right after a beat of total silence |
 | 21.55s | Beyond wellness. Within biology. | Tagline and URL |
 
 ## Sound design
@@ -35,14 +35,14 @@ The score is synthesized in code and timed to the cut, which sits on a 120 BPM g
 - **Vintage section.** A film-projector rattle and clock ticks play under the lineage shot.
 - **Build and release.** A Shepard-tone riser leads into a true silence gap. The logo then lands on a D-major resolve, a sub drop, and a shimmer.
 
-Whisper (small.en) transcribes the final mix almost word for word, which confirms the VO cuts through the music.
+Whisper (small.en) transcribes the final mix word for word, which confirms every line cuts through the music.
 
 ## How it was made (all local)
 
 | Step | Model or tool |
 |---|---|
 | Stills (cells, eye, marketing, patents, journals, citations, vintage lab, capsule) | RealVisXL V5.0 Lightning (SDXL), 768×1344, 5–6 steps |
-| AI video motion (hook and capsule) | LTX-Video 2B 0.9.8 distilled, image-to-video. The motion is transferred onto the upscaled stills with optical flow, so detail stays sharp. |
+| AI video (hook and capsule) | LTX-Video 2B 0.9.8 distilled, image-to-video, 41 frames, about 5 min per clip on CPU. On the hook, its camera push and cell parallax are carried onto the sharp upscaled still with optical flow. On the capsule, its generated smoke burst plays behind the sharp capsule. |
 | Upscaling | Real-ESRGAN general x4v3 |
 | 3D camera moves | Depth Anything V2 depth maps, then a 2.5D parallax renderer |
 | Founder portraits | BiRefNet segmentation, then a low-key relight with a crimson rim light (real photos from the website) |

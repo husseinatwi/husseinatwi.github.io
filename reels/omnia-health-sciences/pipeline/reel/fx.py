@@ -363,3 +363,22 @@ class FlowAnim:
         fu = cv2.resize(f, (self.p.w, self.p.h), interpolation=cv2.INTER_LINEAR)
         mx = self.g[0] + fu[..., 0] * self.sx * strength; my = self.g[1] + fu[..., 1] * self.sy * strength
         return cv2.remap(self.p.img, mx, my, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT101)
+
+
+class LtxFrames:
+    """AI-generated video (LTX) used directly as the moving background, with the sharp plate's
+    near subject (by depth) composited on top so the hero object keeps full detail."""
+    def __init__(self, plate, key, lo=0.35, hi=0.5):
+        path = os.path.join(SCR, "ltx", f"{key}_frames.npy")
+        self.ok = os.path.exists(path)
+        if not self.ok: return
+        self.fr = np.load(path); self.N = len(self.fr); self.p = plate
+        m = np.clip((plate.depth - lo) / (hi - lo), 0, 1).astype(np.float32)
+        m = cv2.erode(m, np.ones((11, 11), np.uint8), iterations=1)
+        self.mask = cv2.GaussianBlur(m, (0, 0), 5)[..., None]
+    def src(self, u, gain=0.45, tint=(1.0, 0.8, 0.78)):
+        pos = c01(u) * (self.N - 1); i0 = int(math.floor(pos)); i1 = min(self.N - 1, i0 + 1); fr = pos - i0
+        a = (self.fr[i0].astype(np.float32) * (1 - fr) + self.fr[i1].astype(np.float32) * fr) / 255.
+        up = cv2.resize(a, (self.p.w, self.p.h), interpolation=cv2.INTER_CUBIC)
+        bg = np.clip(up, 0, 1) * gain * np.array(tint, np.float32)
+        return bg * (1 - self.mask) + self.p.img * self.mask
