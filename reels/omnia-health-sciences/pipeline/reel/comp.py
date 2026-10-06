@@ -338,22 +338,11 @@ def s_logo(t, lt, fi):
     if k2 > 0:
         tg2 = T("Within Biology.", FR(600, 66, True))
         draw(img, tg2, W / 2, 1195, reveal=lambda i: (out_cubic((k2 - i * 0.025) / 0.3), 0), color=np.array([0.95, 0.22, 0.16], np.float32), glow=0.5, glow_color=RED)
-    k3 = ramp(t, 23.25, 23.65)
-    if k3 > 0:
-        url = T("omniahealthsciences.com", OU(500, 34), 0.12)
-        draw(img, url, W / 2, 1330, alpha=0.85 * out_cubic(k3))
-        lw2 = int(90 * out_cubic(k3))
-        for sx in (-1, 1):
-            xa = int(W / 2 + sx * (url.ink_w / 2 + 30)); cv2.line(img, (xa, 1330), (xa + sx * lw2, 1330), tuple(float(c) for c in RED), 2, cv2.LINE_AA)
     img *= 1 - 0.5 * ramp(t, TL.DURATION - 0.25, TL.DURATION)
-    return img, dict(bloom=0.25, streak=0.15, nohud=True)
+    return img, dict(bloom=0.25, streak=0.15)
 
 P_RED = Particles(70, seed=1, color=(1.0, 0.42, 0.36), speed=(4, -26), size=(1.5, 10))
 P_GOLD = Particles(90, seed=2, color=(1.0, 0.75, 0.45), speed=(0, -12), size=(1.2, 7))
-
-HUD = {"cells": "01 — CELLULAR", "eye": "02 — TRUST", "marketing": "02 — TRUST", "mousa": "03 — THE SCIENTIST",
-       "patents": "04 — EVIDENCE LEDGER", "pubs": "04 — EVIDENCE LEDGER", "citations": "04 — EVIDENCE LEDGER",
-       "harakeh": "05 — LINEAGE", "capsule": "06 — FORMULATION"}
 
 def render_frame(fi):
     t = fi / FPS
@@ -377,12 +366,6 @@ def render_frame(fi):
         img = crt_off(img, ramp(t, 5.42, 5.72))
     img = vignette(img, 0.5 if o.get("vintage") else 0.38)
     img = grain(img, fi, 0.085 if o.get("vintage") else 0.042)
-    if not o.get("nohud") and key != "black":
-        hud = HUD.get(key, "")
-        draw(img, T(hud, MO(400, 22), 0.08), 70, 212, alpha=0.55, anchor="left")
-        tc = "TC 00:00:{:02d}:{:02d}".format(int(t), fi % FPS)
-        draw(img, T(tc, MO(400, 22), 0.08), W - 70, 212, alpha=0.45, anchor="right")
-        if (fi // 15) % 2 == 0: cv2.circle(img, (W - 70 - T(tc, MO(400, 22), 0.08).ink_w - 22, 212), 6, tuple(float(c) for c in RED * 1.1), -1, cv2.LINE_AA)
     return to8(img)
 
 if __name__ == "__main__":

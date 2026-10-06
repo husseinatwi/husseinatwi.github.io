@@ -23,7 +23,7 @@ A 24.6-second vertical reel for [omniahealthsciences.com](https://omniahealthsci
 | 14.75s | His co-founder worked alongside a two-time Nobel laureate. | Prof. Steve Harakeh, then a vintage lab with **2× NOBEL LAUREATE** |
 | 18.50s | Together, they built this. | Capsule hero shot, then a dive into the capsule |
 | 20.40s | Omnia. | Logo slam with a shockwave, right after a beat of total silence |
-| 21.55s | Beyond wellness. Within biology. | Tagline and URL |
+| 21.55s | Beyond wellness. Within biology. | Tagline under the logo (clean end card, no URL) |
 
 ## Sound design
 
@@ -49,7 +49,7 @@ Whisper (small.en) transcribes the final mix word for word, which confirms every
 | Voice | Kokoro-82M (`am_michael`), pitched down 1.6 st with formants preserved, then EQ, compression and reverb |
 | Logo | Vectorized from the site's 379 px PNG with potrace, so it stays crisp at full size |
 | Type | Brand fonts: Fraunces (serif) and Outfit (sans) |
-| Compositing | Custom Python/OpenCV pipeline: kinetic type, bloom and anamorphic streaks, chromatic aberration, grain, glitch, CRT-off, shockwave |
+| Compositing | Custom Python/OpenCV pipeline: kinetic type, bloom and anamorphic streaks, chromatic aberration, grain, glitch, CRT-off, shockwave. There are no corner labels or timecode overlays. |
 
 ## Before you post
 
